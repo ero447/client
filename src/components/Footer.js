@@ -4,8 +4,8 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <div>© {new Date().getFullYear()} AAA Shop</div>
-        <div style={{ color: '#8593a5' }}>Built with care · Simple demo store</div>
+        <div>© {new Date().getFullYear()} AutoSound Shop</div>
+        <div style={{ color: '#8593a5' }}>Car audio gear and installation-ready sound systems</div>
       </div>
     </footer>
   );

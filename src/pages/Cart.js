@@ -12,14 +12,13 @@ const Cart = ({ cart, removeFromCart }) => {
     const handleCheckout = async () => {
         try {
             const order = { items: cartItems.map(item => ({ productId: item._id, name: item.name, price: item.price })), total };
-            await axios.post('http://localhost:5000/api/orders', order);
+            await axios.post('/api/orders', order);
             alert("Պատվերը հաջողությամբ ընդունվեց։");
         } catch (err) {
             console.error(err);
             alert('Սխալ պատվիրելու ժամանակ');
         }
     };
-
     return (
         <div className="cart-container">
             <h1>Ձեր զամբյուղը</h1>

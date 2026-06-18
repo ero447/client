@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import sampleProducts from '../data/products';
+import axios from 'axios';
 
 const Product = ({ addToCart }) => {
   const { id } = useParams();
-  const product = sampleProducts.find(p => p._id === id) || { name: 'Անհայտ ապրանք', price: 0, image: 'https://via.placeholder.com/300x160?text=No+Image', description: '' };
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`/api/products/${id}`);
+        setProduct(res.data);
+      } catch (err) {
+        console.error(err);
+        setError('Ապրանքը չի գտնվել');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (loading) {
+    return <div className="container" style={{ padding: 24 }}>Loading...</div>;
+  }
+
+  if (error || !product) {
+    return (
+      <div className="container" style={{ padding: 24 }}>
+        <p>{error || 'Ապրանքը չի գտնվել'}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container" style={{ padding: 24 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
         <div>
-          <img src={product.image} alt={product.name} style={{ width: '100%', borderRadius: 8 }} />
+          <img loading="lazy" src={product.image || 'https://via.placeholder.com/800x480?text=No+Image'} alt={product.name} style={{ width: '100%', maxHeight: 480, objectFit: 'contain', borderRadius: 8 }} onError={(e)=>{e.target.onerror=null; e.target.src='https://via.placeholder.com/800x480?text=No+Image'}} />
         </div>
         <div>
           <h2>{product.name}</h2>
