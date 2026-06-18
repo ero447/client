@@ -20,7 +20,7 @@ const Home = ({ addToCart, searchTerm }) => {
                 setProducts(items);
             } catch (err) {
                 console.error('Սխալ տվյալները ստանալիս:', err);
-                setError('Cannot reach backend, using local sample products.');
+                setError();
                 const query = (searchTerm || '').toLowerCase();
                 setProducts(sampleProducts.filter(product => {
                     return (
