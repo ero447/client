@@ -1,10 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+:root {
+  --primary: #0a0e27;
+  --primary-light: #1a1f3a;
+  --primary-lighter: #252d47;
+  --bg: linear-gradient(135deg, #0a0e27 0%, #141829 100%);
+  --card: #1a1f3a;
+  --card-hover: #252d47;
+  --text: #e0e7ff;
+  --text-muted: #9ca3af;
+  --accent: #00d4ff;
+  --accent-secondary: #6366f1;
+  --accent-glow: #00d4ff;
+  --success: #10b981;
+  --danger: #ff4757;
+  --radius: 12px;
+  --shadow: 0 4px 16px rgba(0, 212, 255, 0.1);
+  --shadow-lg: 0 12px 32px rgba(0, 212, 255, 0.15);
+  --shadow-dark: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 code {
